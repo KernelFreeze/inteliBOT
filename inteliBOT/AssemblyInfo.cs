@@ -5,10 +5,10 @@ using System.Runtime.CompilerServices;
 // Change them to the values specific to your project.
 
 [assembly: AssemblyTitle("inteliBOT")]
-[assembly: AssemblyDescription("The new bot now bsed on linux console")]
+[assembly: AssemblyDescription("The new bot now for Wikipedia")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Miguel Pelaez Software")]
-[assembly: AssemblyProduct("inteliBOT 1.2")]
+[assembly: AssemblyProduct("inteliBOT")]
 [assembly: AssemblyCopyright("(c) 2014 inteliBOT")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
