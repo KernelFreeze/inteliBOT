@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4EFEAF0F-9A6B-41D7-91CB-5B9F838AEE8A}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>inteliBOT</RootNamespace>
+    <AssemblyName>inteliBOT</AssemblyName>
+    <StartupObject>inteliBOT.MainClass</StartupObject>
+    <CodePage>65001</CodePage>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>False</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Externalconsole>True</Externalconsole>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>none</DebugType>
+    <Optimize>False</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Externalconsole>True</Externalconsole>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="IQToolkit">
+      <HintPath>..\..\Descargas\linqtowiki\LINQ-to-Wiki-master\LinqToWiki.Core\bin\Debug\IQToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="LinqToWiki.Core">
+      <HintPath>..\..\Descargas\linqtowiki\LINQ-to-Wiki-master\LinqToWiki.Core\bin\Debug\LinqToWiki.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>..\..\Descargas\linqtowiki\LINQ-to-Wiki-master\LinqToWiki.Core\bin\Debug\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="LinqToWiki.Generated">
+      <HintPath>..\..\Descargas\linqtowiki\LINQ-to-Wiki-master\Lib\LinqToWiki.Generated\LinqToWiki.Generated.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Main.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="login.cs" />
+    <Compile Include="Scripts\help.cs" />
+    <Compile Include="Scripts\replace.cs" />
+    <Compile Include="DownloadPage.cs" />
+    <Compile Include="Site.cs" />
+    <Compile Include="Scripts\vote.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Scripts\" />
+  </ItemGroup>
+</Project>
