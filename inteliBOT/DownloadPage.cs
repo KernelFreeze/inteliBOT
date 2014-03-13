@@ -19,15 +19,16 @@ namespace inteliBOT
 			string url = new System.Uri (Site.Name).Host;
 			Text = Request (String.Format ("http://{0}/w/index.php?title={1}&action=raw", url, Name));
 			XmlDocument doc = new XmlDocument ();
-			doc.LoadXml (Request (String.Format (@"http://{0}.wikipedia.org/w/api.php?action=query&titles={1}&prop=info&format=xml", "es", Name)));
+			doc.LoadXml (Request (String.Format (@"http://{0}/w/api.php?action=query&titles={1}&prop=info&format=xml",  url, Name)));
 			OldId = doc.SelectSingleNode ("/api/query/pages/page/@lastrevid").Value;
 
 		}
 
 		public string Save (string Text, string Comment, bool Minor, bool Bot, bool NewSection, string sectiontitle = null)
 		{
+			string url = new System.Uri (Site.Name).Host;
 			XmlDocument doc = new XmlDocument ();
-			doc.LoadXml (Request (String.Format (@"http://{0}.wikipedia.org/w/api.php?action=query&titles={1}&prop=info&format=xml", "es", Tittle)));
+			doc.LoadXml (Request (String.Format (@"http://{0}/w/api.php?action=query&titles={1}&prop=info&format=xml", url, Tittle)));
 			string newID = doc.SelectSingleNode ("/api/query/pages/page/@lastrevid").Value;
 			if (this.OldId == newID) {
 				var token = Site.wiki.tokens (new[] { tokenstype.edit }).edittoken;
