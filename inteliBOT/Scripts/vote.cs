@@ -91,23 +91,26 @@ namespace inteliBOT.Scripts
 			Console.ForegroundColor = ConsoleColor.Magenta;
 			Console.WriteLine("Attempt to check votes in {0}", art);
 			Console.ResetColor();
-			string[] Lines = page.Text.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
+			string[] Lines = page.Text.Split(new string[] { "\n" }, StringSplitOptions.None);
 			List<string> LinesD = new List<string>();
 			//Use a loop for improve the speed
 			for(int i = 0; i < Lines.Length; i++)
 			{
 				string Line = Lines[i];
-				if (Line.StartsWith("#") && Line.ToCharArray()[1] != ':')
+				if (Line.StartsWith("#") && Line[1] != ':')
 				{
 					string userName = String.Empty;
-					Regex regex = new Regex("[Uu]s(er|uari[ao])([ _][Dd]iscusión|[ _][Tt]alk)?:\\s*(.*?)[#\\|\\/\\]]",RegexOptions.IgnoreCase|RegexOptions.Singleline);
+					Regex regex = new Regex("[Uu]s(er|uari[ao])([ _][Dd]iscusión|[ _][Tt]alk)?:\\s*(.*?)[#\\|\\/\\]]", RegexOptions.Singleline);
 					Match match = regex.Match(Line);
-					userName = match.Groups[3].ToString();
-					Console.WriteLine("Checking {0}", userName);
-					if (EditCounter(userName) < 100 || ((TimeSpan)(DateTime.Now - FirstEdit(userName))).Days < 30)
-					{
-						Line = "#:<s>" + Line.Replace("#", "") + "</s> {{votonulo|~~~~}}";
-					}
+                    if (match.Success)
+                    {
+                        userName = match.Groups[3].ToString();
+                        Console.WriteLine("Checking {0}", userName);
+                        if (EditCounter(userName) < 100 || ((TimeSpan)(DateTime.Now - FirstEdit(userName))).Days < 30)
+                        {
+                            Line = "#:<s>" + Line.Replace("#", "") + "</s> {{subst:votonulo|~~~~}}";
+                        }
+                    }
 					LinesD.Add(Line);
 				}
 				else 
